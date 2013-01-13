@@ -55,9 +55,16 @@ public class NarUnpackMojo extends AbstractDependencyMojo {
     return new ScopeFilter( Artifact.SCOPE_COMPILE, null );
   }
 
+  /**
+   * Skip processing of files after unpacking (chmod +x, ranlib, install_name_tool, etc.).
+   *
+   * @parameter default-value="false"
+   */
+  protected boolean skipUnpackProcessing;
+  
   @Override
   public final void narExecute() throws MojoExecutionException, MojoFailureException {
     final List<AttachedNarArtifact> attachedNarArtifacts = getAttachedNarArtifacts(libraries);
-    unpackAttachedNars(attachedNarArtifacts);
+    unpackAttachedNars(attachedNarArtifacts, !skipUnpackProcessing);
   }
 }

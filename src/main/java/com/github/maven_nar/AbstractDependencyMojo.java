@@ -725,7 +725,7 @@ public abstract class AbstractDependencyMojo extends AbstractNarMojo {
     return this.remoteArtifactRepositories;
   }
 
-  public final void unpackAttachedNars(final List<AttachedNarArtifact> dependencies)
+  public final void unpackAttachedNars(final List<AttachedNarArtifact> dependencies, boolean process)
       throws MojoExecutionException, MojoFailureException {
     final File unpackDir = getUnpackDirectory();
 
@@ -747,7 +747,7 @@ public abstract class AbstractDependencyMojo extends AbstractNarMojo {
       // TODO: the dependency may be specified against a different linker
       // (version)?
       // AOL aol = dependency.getClassifier(); Trim
-      layout.unpackNar(unpackDir, this.archiverManager, file, getOS(), getLinker().getName(), getAOL());
+      layout.unpackNar(unpackDir, this.archiverManager, file, getOS(), getLinker().getName(), getAOL(), process);
     }
   }
 

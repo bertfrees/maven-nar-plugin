@@ -70,7 +70,7 @@ public class NarAssemblyMojo extends AbstractDependencyMojo {
     // unmodified AttachedNarArtifact
     // objects
     attachedNarArtifacts = getAttachedNarArtifacts(libraries);
-    unpackAttachedNars(attachedNarArtifacts);
+    unpackAttachedNars(attachedNarArtifacts, true);
 
     // this may make some extra copies...
     for (final Object element : attachedNarArtifacts) {

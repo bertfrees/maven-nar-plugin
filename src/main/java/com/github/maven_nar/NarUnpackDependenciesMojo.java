@@ -55,7 +55,7 @@ public class NarUnpackDependenciesMojo extends NarDownloadDependenciesMojo {
 
     // unpack the nar files
     final List<AttachedNarArtifact> attachedNarArtifacts = getAttachedNarArtifacts(tests);
-    unpackAttachedNars(attachedNarArtifacts);
+    unpackAttachedNars(attachedNarArtifacts, true);
   }
 
 }

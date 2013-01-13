@@ -235,28 +235,28 @@ public class NarLayout21 extends AbstractNarLayout {
 
   @Override
   public void unpackNar(final File unpackDirectory, final ArchiverManager archiverManager, final File file,
-      final String os, final String linkerName, final AOL defaultAOL)
+      final String os, final String linkerName, final AOL defaultAOL, boolean process)
       throws MojoExecutionException, MojoFailureException {
     final File dir = getNarUnpackDirectory(unpackDirectory, file);
 
-    boolean process = false;
+    boolean unpack = false;
 
     if (!unpackDirectory.exists()) {
       unpackDirectory.mkdirs();
-      process = true;
+      unpack = true;
     } else if (!dir.exists()) {
-      process = true;
+      unpack = true;
     } else if (file.lastModified() > dir.lastModified()) {
       NarUtil.deleteDirectory(dir);
-      process = true;
+      unpack = true;
     } else if (dir.list().length == 0) {
       // a previously failed cleanup which failed deleting all may have left a
       // state where dir modified > file modified but not unpacked.
-      process = true;
+      unpack = true;
     }
 
-    if (process) {
-      unpackNarAndProcess(archiverManager, file, dir, os, linkerName, defaultAOL);
+    if (unpack) {
+      unpackNarAndProcess(archiverManager, file, dir, os, linkerName, defaultAOL, process);
     }
   }
 

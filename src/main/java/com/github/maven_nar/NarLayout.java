@@ -94,7 +94,8 @@ public interface NarLayout {
    * @param linkerName
    */
   void
-      unpackNar(File baseDir, ArchiverManager archiverManager, File file, String os, String linkerName, AOL defaultAOL)
+      unpackNar(File baseDir, ArchiverManager archiverManager, File file, String os, String linkerName, AOL defaultAOL,
+                boolean process)
           throws MojoExecutionException, MojoFailureException;
 
 }

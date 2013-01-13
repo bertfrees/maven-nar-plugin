@@ -64,6 +64,6 @@ public class NarTestUnpackMojo extends AbstractDependencyMojo {
   @Override
   public final void narExecute() throws MojoExecutionException, MojoFailureException {
     final List<AttachedNarArtifact> attachedNarArtifacts = getAttachedNarArtifacts(tests);
-    unpackAttachedNars(attachedNarArtifacts);
+    unpackAttachedNars(attachedNarArtifacts, true);
   }
 }

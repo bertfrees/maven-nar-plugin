@@ -102,7 +102,7 @@ public abstract class AbstractNarLayout implements NarLayout, NarConstants {
   }
 
   protected void unpackNarAndProcess(final ArchiverManager archiverManager, final File file, final File narLocation,
-      final String os, final String linkerName, final AOL defaultAOL)
+      final String os, final String linkerName, final AOL defaultAOL, boolean process)
       throws MojoExecutionException, MojoFailureException {
 
     final String gpp = "g++";
@@ -122,6 +122,9 @@ public abstract class AbstractNarLayout implements NarLayout, NarConstants {
     }
 
     // process
+    if (!process) {
+      return;
+    }
     if (!NarUtil.getOS(os).equals(OS.WINDOWS)) {
       NarUtil.makeExecutable(new File(narLocation, "bin/" + defaultAOL), this.log);
       // FIXME clumsy
